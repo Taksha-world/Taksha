@@ -18,7 +18,7 @@ export default function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-terracotta-400">
                 <span className="font-devanagari text-sm font-bold text-white leading-none">त</span>
               </div>
-              <span className="font-devanagari text-xl font-bold text-stone-800">तक्षा</span>
+              <span className="font-devanagari text-xl font-bold text-stone-800">तक्ष</span>
             </Link>
             <p className="text-sm text-stone-400 leading-relaxed">
               Where posts are living software. Build, share, and fork running

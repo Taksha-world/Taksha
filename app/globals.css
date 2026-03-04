@@ -90,4 +90,42 @@ body::before {
       inset 0 0 30px rgba(0, 0, 0, 0.03),
       0 2px 12px rgba(0, 0, 0, 0.06);
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Feed grid — fixed rows + dense packing on sm+ */
+@media (min-width: 640px) {
+  .feed-grid {
+    grid-auto-rows: 100px;
+    grid-auto-flow: dense;
+  }
+}
+
+/* Kill scrollbars inside thumbnail iframes */
+iframe.thumb-iframe {
+  overflow: hidden;
+}
+iframe.thumb-iframe::-webkit-scrollbar {
+  display: none;
 }

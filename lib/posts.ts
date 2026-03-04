@@ -1,15 +1,29 @@
+export type PostType = "build" | "text" | "image" | "video" | "meme";
+
 export interface Post {
   id: string;
+  type: PostType;
   title: string;
   description: string;
   author: {
     name: string;
     avatar: string;
+    id?: string;
   };
-  tag: "HTML" | "JavaScript" | "CSS" | "Python";
+  tag: string;
   likes: number;
   forks: number;
+  // Code / build posts
   code: string;
+  // Media posts
+  mediaUrl?: string;
+  mediaType?: "image" | "video" | "gif";
+  thumbnailUrl?: string;
+  // Text posts
+  body?: string;
+  // Links
+  repoUrl?: string;
+  deployUrl?: string;
   createdAt?: number; // timestamp in ms
 }
 
@@ -29,6 +43,7 @@ export function timeAgo(timestamp?: number): string {
 export const samplePosts: Post[] = [
   {
     id: "crop-price-tracker",
+    type: "build",
     title: "Crop Price Tracker",
     description:
       "Live dashboard tracking wheat, rice, and soybean prices with color-coded daily changes.",
@@ -207,6 +222,7 @@ export const samplePosts: Post[] = [
   },
   {
     id: "hindi-english-translator",
+    type: "build",
     title: "Hindi-English Translator",
     description:
       "A minimal translation widget with common Hindi-English word pairs. Type and translate instantly.",
@@ -422,6 +438,7 @@ export const samplePosts: Post[] = [
   },
   {
     id: "expense-calculator",
+    type: "build",
     title: "Expense Calculator",
     description:
       "Track daily expenses by category with a running total. Simple, functional, fast.",
@@ -611,6 +628,7 @@ export const samplePosts: Post[] = [
   },
   {
     id: "weather-card",
+    type: "build",
     title: "Weather Card — Mumbai",
     description:
       "A beautifully designed weather card for Mumbai with current conditions, forecast, and air quality.",
@@ -815,6 +833,7 @@ export const samplePosts: Post[] = [
   },
   {
     id: "pomodoro-timer",
+    type: "build",
     title: "Pomodoro Timer",
     description:
       "A minimal focus timer with 25-minute work sessions and visual progress ring. Click to start, click again to pause.",
@@ -893,6 +912,7 @@ export const samplePosts: Post[] = [
   },
   {
     id: "color-palette-gen",
+    type: "build",
     title: "Color Palette Generator",
     description:
       "Generate harmonious color palettes with one click. Copy any color's hex code instantly.",
@@ -996,5 +1016,154 @@ export const samplePosts: Post[] = [
   </script>
 </body>
 </html>`,
+  },
+  // --- Media posts ---
+  {
+    id: "meme-css-is-awesome",
+    type: "meme",
+    title: "CSS Is Awesome",
+    description: "When overflow: hidden is life. The eternal frontend struggle.",
+    author: { name: "Rahul Dev", avatar: "RD" },
+    tag: "Meme",
+    likes: 534,
+    forks: 12,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=320&h=180&fit=crop",
+    createdAt: Date.now() - 30 * 60 * 1000,
+  },
+  {
+    id: "video-react-in-5-min",
+    type: "video",
+    title: "React Hooks Explained in 5 Minutes",
+    description: "Quick visual breakdown of useState, useEffect, and useRef. No fluff, just code.",
+    author: { name: "Kavya Iyer", avatar: "KI" },
+    tag: "Video",
+    likes: 312,
+    forks: 5,
+    code: "",
+    mediaUrl: "https://www.youtube.com/embed/dpw9EHDh2bM",
+    mediaType: "video",
+    thumbnailUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=320&h=180&fit=crop",
+    createdAt: Date.now() - 4 * 60 * 60 * 1000,
+  },
+  {
+    id: "text-why-i-love-rust",
+    type: "text",
+    title: "Why I Switched From TypeScript to Rust for Backend",
+    description: "After 3 years of Node.js, I moved our API layer to Rust. Here's what happened.",
+    author: { name: "Aditya Rao", avatar: "AR" },
+    tag: "Text",
+    likes: 189,
+    forks: 0,
+    code: "",
+    body: "I've been writing TypeScript for 3 years straight. Express, Fastify, tRPC — I've used them all. But last quarter I rewrote our main API in Rust with Axum, and the results shocked me:\n\n**Performance:** 40ms avg response → 2ms. Not a typo.\n**Memory:** 512MB → 18MB for the same workload.\n**Reliability:** Zero crashes in 3 months of production.\n\nThe learning curve was steep — the borrow checker humbled me for weeks. But once it clicked, I realized Rust wasn't fighting me. It was protecting me.\n\nThe best part? Our AWS bill dropped 73%.\n\nWould I recommend Rust for everyone? No. For a quick MVP, TypeScript is still king. But for anything touching production at scale, Rust is now my default.\n\nWhat's your experience? Drop your thoughts below.",
+    createdAt: Date.now() - 6 * 60 * 60 * 1000,
+  },
+  {
+    id: "image-desk-setup",
+    type: "image",
+    title: "My WFH Dev Setup — 2026 Edition",
+    description: "Finally happy with the cable management. Dual ultrawide + standing desk.",
+    author: { name: "Neha Verma", avatar: "NV" },
+    tag: "Image",
+    likes: 421,
+    forks: 3,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&h=500&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=320&h=180&fit=crop",
+    createdAt: Date.now() - 18 * 60 * 60 * 1000,
+  },
+  {
+    id: "meme-git-push-force",
+    type: "meme",
+    title: "git push --force on a Friday",
+    description: "Living dangerously. What could go wrong?",
+    author: { name: "Deepak Joshi", avatar: "DJ" },
+    tag: "Meme",
+    likes: 876,
+    forks: 24,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=320&h=180&fit=crop",
+    createdAt: Date.now() - 2 * 24 * 60 * 60 * 1000,
+  },
+  {
+    id: "video-tailwind-tricks",
+    type: "video",
+    title: "5 Tailwind CSS Tricks You Didn't Know",
+    description: "Advanced utility patterns that will level up your UI game. Includes animated gradients.",
+    author: { name: "Shreya Kapoor", avatar: "SK" },
+    tag: "Video",
+    likes: 245,
+    forks: 8,
+    code: "",
+    mediaUrl: "https://www.youtube.com/embed/aSlK3GhRuXA",
+    mediaType: "video",
+    thumbnailUrl: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=320&h=180&fit=crop",
+    createdAt: Date.now() - 10 * 60 * 60 * 1000,
+  },
+  {
+    id: "image-sunset-hackathon",
+    type: "image",
+    title: "Sunset Over the Hackathon Venue",
+    description: "Golden hour at the hackathon. 12 hours in, still going strong.",
+    author: { name: "Priya Sharma", avatar: "PS" },
+    tag: "Image",
+    likes: 367,
+    forks: 2,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
+    createdAt: Date.now() - 12 * 60 * 60 * 1000,
+  },
+  {
+    id: "image-mech-keyboard",
+    type: "image",
+    title: "Mechanical Keyboard Collection",
+    description: "My custom keycap collection. Each one tells a story.",
+    author: { name: "Vikram Singh", avatar: "VS" },
+    tag: "Image",
+    likes: 298,
+    forks: 1,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&h=600&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&h=300&fit=crop",
+    createdAt: Date.now() - 1 * 24 * 60 * 60 * 1000,
+  },
+  {
+    id: "image-neon-code",
+    type: "image",
+    title: "Late Night Code & Neon Lights",
+    description: "When the code flows better after midnight.",
+    author: { name: "Ankit Mehta", avatar: "AM" },
+    tag: "Image",
+    likes: 512,
+    forks: 7,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&h=600&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1550439062-609e1531270e?w=400&h=300&fit=crop",
+    createdAt: Date.now() - 3 * 60 * 60 * 1000,
+  },
+  {
+    id: "image-server-room",
+    type: "image",
+    title: "Server Room Aesthetic",
+    description: "There's something beautiful about rows of blinking lights.",
+    author: { name: "Lakshmi Nair", avatar: "LN" },
+    tag: "Image",
+    likes: 445,
+    forks: 5,
+    code: "",
+    mediaUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+    mediaType: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
+    createdAt: Date.now() - 15 * 60 * 60 * 1000,
   },
 ];

@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ToastProvider } from "@/components/Toast";
+import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -55,11 +56,13 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${sourceSans.variable} ${notoDevanagari.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ToastProvider>
-          <Navbar />
-          <main className="relative z-10 pt-16">{children}</main>
-          <Footer />
-        </ToastProvider>
+        <AuthProvider>
+          <ToastProvider>
+            <Navbar />
+            <main className="relative z-10 pt-14">{children}</main>
+            <Footer />
+          </ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

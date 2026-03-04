@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Zap, GitFork, Globe, Rocket, Users, ArrowRight, Hammer } from "lucide-react";
+import { Code2, Zap, GitFork, Globe, Rocket, Users, ArrowRight, Hammer, Sparkles, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 const features = [
@@ -48,25 +48,59 @@ export default function AboutPage() {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-amber-500/[0.05] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-radial from-amber-500/[0.04] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-4xl px-6 pt-20 pb-16 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h1 className="font-display text-5xl md:text-6xl font-bold tracking-tight text-stone-800 mb-6 leading-[1.1]">
-              What if every social media post{" "}
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-600/15 bg-amber-500/[0.06] px-4 py-1.5 text-xs font-medium text-amber-700 mb-6">
+              <Sparkles className="h-3.5 w-3.5" />
+              Posts that run. Code that lives.
+            </div>
+
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-stone-800 mb-4 leading-[1.1]">
+              Software that lives{" "}
               <span className="bg-gradient-to-r from-amber-600 via-amber-500 to-terracotta-400 bg-clip-text text-transparent">
-                was a running program?
+                in the feed
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-stone-500 leading-relaxed">
-              Taksha reimagines the social feed. Instead of static text and images,
-              every post is an interactive, living application. Build a calculator, a
-              game, a data dashboard — and share it the way you&apos;d share a tweet.
+
+            <p className="mx-auto max-w-2xl text-lg text-stone-500 leading-relaxed mb-8">
+              Taksha is where every post is a running program. Build, share, and fork
+              live applications — no deploy step, no friction. Think GitHub meets Twitter for code.
             </p>
+
+            <div className="flex items-center justify-center gap-4">
+              <Link
+                href="/create"
+                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:from-amber-600 hover:to-amber-700 hover:shadow-warm-lg"
+              >
+                <Hammer className="h-4 w-4" />
+                Start Building
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 px-6 py-3 text-sm font-medium text-stone-600 transition-all duration-300 hover:border-amber-500/30 hover:text-amber-700 hover:bg-amber-500/5"
+              >
+                Explore Feed
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="flex items-center justify-center gap-8 mt-10">
+              <div className="flex items-center gap-2 text-stone-400">
+                <TrendingUp className="h-4 w-4 text-amber-500" />
+                <span className="text-sm font-medium">6 live apps</span>
+              </div>
+              <div className="flex items-center gap-2 text-stone-400">
+                <Users className="h-4 w-4 text-amber-500" />
+                <span className="text-sm font-medium">Growing community</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -173,10 +207,10 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="glass-card rounded-2xl p-8 md:p-12 text-center"
         >
-          <span className="font-devanagari text-5xl font-bold text-amber-600">तक्षा</span>
+          <span className="font-devanagari text-5xl font-bold text-amber-600">तक्ष</span>
           <p className="mt-4 text-stone-600 max-w-xl mx-auto leading-relaxed">
-            <strong>Taksha</strong> (तक्षा) comes from the Sanskrit <em>takṣ</em> — &quot;to craft, to
-            carve, to shape.&quot; In ancient India, Takshashila was the world&apos;s first
+            <strong>Taksha</strong> (तक्ष) comes from the Sanskrit <em>takṣ</em> — &quot;to craft, to
+            carve, to shape with precision.&quot; In ancient India, Takshashila was the world&apos;s first
             university, where knowledge was created and shared freely. We&apos;re bringing
             that spirit to software.
           </p>

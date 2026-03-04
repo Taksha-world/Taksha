@@ -104,15 +104,19 @@ function CreatePageInner() {
     toast("Code generated!", "success");
   }, [toast]);
 
-  // Load forked code from URL
+  // Load forked code or prompt from URL
   useEffect(() => {
     const urlCode = searchParams.get("code");
     const urlTitle = searchParams.get("title");
+    const urlPrompt = searchParams.get("prompt");
     if (urlCode) {
       setCode(decodeURIComponent(urlCode));
     }
     if (urlTitle) {
       setTitle(decodeURIComponent(urlTitle));
+    }
+    if (urlPrompt) {
+      setTitle(decodeURIComponent(urlPrompt));
     }
   }, [searchParams]);
 
@@ -164,6 +168,7 @@ function CreatePageInner() {
 
     // Save to localStorage
     saveUserPost({
+      type: "build",
       title: postTitle,
       description: "A live app created on Taksha",
       author: { name: "You", avatar: "Y" },
@@ -180,7 +185,7 @@ function CreatePageInner() {
   };
 
   return (
-    <div className="h-[calc(100vh-64px)] flex flex-col">
+    <div className="h-[calc(100vh-56px)] flex flex-col">
       {/* AI Prompt Bar */}
       <PromptBar onGenerate={handlePromptGenerate} />
 
