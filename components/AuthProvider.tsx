@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, useRef } from "react";
 import { Session, SupabaseClient } from "@supabase/supabase-js";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface AuthContextType {
   session: Session | null;
@@ -21,6 +21,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabaseRef = useRef<SupabaseClient | null>(null);
 
   useEffect(() => {
+    // Skip auth initialization if Supabase is not configured
+    if (!isSupabaseConfigured()) {
+      setIsLoading(false);
+      return;
+    }
+
     async function initializeAuth() {
       try {
         if (!supabaseRef.current) {

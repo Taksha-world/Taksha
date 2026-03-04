@@ -5,6 +5,7 @@ import { Heart, Play, Code2, Image as ImageIcon, Film, FileText, Smile } from "l
 import { useRouter } from "next/navigation";
 import type { Post, PostType } from "@/lib/posts";
 import { timeAgo } from "@/lib/posts";
+import React, { useCallback } from "react";
 
 const typeConfig: Record<
   PostType,
@@ -47,7 +48,29 @@ export default function ThumbnailCard({
   const router = useRouter();
   const config = typeConfig[post.type || "build"];
 
+  const handleDragStart = useCallback(
+    (e: React.DragEvent<HTMLElement>) => {
+      // Serialize the minimal info needed for pinning
+      e.dataTransfer.setData(
+        "application/taksha-post",
+        JSON.stringify({
+          id: post.id,
+          title: post.title,
+          avatar: post.author.avatar,
+          type: post.type || "build",
+        })
+      );
+      e.dataTransfer.effectAllowed = "copy";
+    },
+    [post]
+  );
+
   return (
+    <div
+      draggable
+      onDragStart={handleDragStart}
+      className="h-full"
+    >
     <motion.article
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
@@ -108,6 +131,7 @@ export default function ThumbnailCard({
         </div>
       </div>
     </motion.article>
+    </div>
   );
 }
 
