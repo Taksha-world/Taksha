@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Play, Code2, Image as ImageIcon, Film, FileText, Smile } from "lucide-react";
+import { Heart, Play, Code2, Image as ImageIcon, Film, FileText, Smile, MessageSquare } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { Post, PostType } from "@/lib/posts";
 import { timeAgo } from "@/lib/posts";
-import React, { useCallback } from "react";
+import { getCommentCount } from "@/lib/comments";
+import React, { useCallback, useState } from "react";
 
 const typeConfig: Record<
   PostType,
@@ -47,6 +48,7 @@ export default function ThumbnailCard({
 }) {
   const router = useRouter();
   const config = typeConfig[post.type || "build"];
+  const [commentCount] = useState(() => getCommentCount(post.id));
 
   const handleDragStart = useCallback(
     (e: React.DragEvent<HTMLElement>) => {
@@ -123,6 +125,11 @@ export default function ThumbnailCard({
               <span className="flex items-center gap-0.5">
                 <Heart className="h-2.5 w-2.5" />
                 {post.likes}
+              </span>
+              <span>·</span>
+              <span className="flex items-center gap-0.5">
+                <MessageSquare className="h-2.5 w-2.5" />
+                {commentCount}
               </span>
               <span>·</span>
               <span>{timeAgo(post.createdAt)}</span>

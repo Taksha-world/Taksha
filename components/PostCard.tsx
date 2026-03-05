@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Heart, GitFork, Rocket, Play, Code2, ExternalLink, Maximize2 } from "lucide-react";
+import { Heart, GitFork, Rocket, Play, Code2, ExternalLink, Maximize2, MessageSquare } from "lucide-react";
 import { useRouter } from "next/navigation";
 import LivePreview from "./LivePreview";
 import DeployModal from "./DeployModal";
 import { useToast } from "./Toast";
 import type { Post } from "@/lib/posts";
 import { timeAgo } from "@/lib/posts";
+import { getCommentCount } from "@/lib/comments";
 
 interface PostCardProps {
   post: Post;
@@ -27,6 +28,7 @@ export default function PostCard({ post, index }: PostCardProps) {
   const [likeCount, setLikeCount] = useState(post.likes);
   const [showPreview, setShowPreview] = useState(true);
   const [showDeploy, setShowDeploy] = useState(false);
+  const [commentCount] = useState(() => getCommentCount(post.id));
   const router = useRouter();
   const { toast } = useToast();
 
@@ -151,6 +153,16 @@ export default function PostCard({ post, index }: PostCardProps) {
             >
               <GitFork className="h-4 w-4" />
               <span className="font-medium">{post.forks}</span>
+            </motion.button>
+
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={handlePostClick}
+              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-stone-400 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+              title="View comments (Truth Layer)"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span className="font-medium">{commentCount}</span>
             </motion.button>
           </div>
 

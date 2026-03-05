@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import LivePreview from "@/components/LivePreview";
 import DeployModal from "@/components/DeployModal";
+import CommentSection from "@/components/CommentSection";
 import { useToast } from "@/components/Toast";
 import { getPostById } from "@/lib/store";
 import { type Post, timeAgo } from "@/lib/posts";
@@ -339,6 +340,9 @@ export default function PostDetailPage() {
                 </div>
               )}
             </div>
+
+            {/* Truth Layer — Comment Section */}
+            <CommentSection post={post} />
           </motion.div>
         </div>
       </div>
