@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Source_Sans_3, Noto_Sans_Devanagari } from "next/font/google";
+import { Inter, Source_Sans_3, Noto_Sans_Devanagari } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,10 +7,10 @@ import { ToastProvider } from "@/components/Toast";
 import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cormorant.variable} ${sourceSans.variable} ${notoDevanagari.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${sourceSans.variable} ${notoDevanagari.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <AuthProvider>
           <ToastProvider>

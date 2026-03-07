@@ -39,6 +39,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   min-height: 100vh;
+  font-size: 18px;
 }
 
 /* Subtle warm tint */

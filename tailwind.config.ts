@@ -49,7 +49,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-cormorant)", "serif"],
+        display: ["var(--font-inter)", "sans-serif"],
         sans: ["var(--font-source-sans)", "var(--font-noto-devanagari)", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
         devanagari: ["var(--font-noto-devanagari)", "sans-serif"],
