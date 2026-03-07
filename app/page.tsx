@@ -2,8 +2,7 @@
 
 import { Suspense } from "react";
 import Sidebar from "@/components/Sidebar";
-import FeedPrompt from "@/components/FeedPrompt";
-import ToolsSection from "@/components/ToolsSection";
+import VideosSection from "@/components/VideosSection";
 import DebateSection from "@/components/DebateSection";
 
 function FeedContent() {
@@ -15,11 +14,8 @@ function FeedContent() {
       {/* Main content */}
       <div className="flex-1 md:ml-[224px] transition-all duration-200">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 pt-6 pb-24">
-          {/* Build prompt */}
-          <FeedPrompt />
-
-          {/* Tools & Websites */}
-          <ToolsSection />
+          {/* Videos */}
+          <VideosSection />
 
           {/* Debates */}
           <DebateSection />

@@ -89,25 +89,6 @@ export default function VideosSection() {
 
   return (
     <section className="mb-10">
-      <div className="flex items-center justify-between mb-5">
-        <div>
-          <h2 className="text-lg font-bold text-stone-800 tracking-tight">
-            Book Discussions at Google
-          </h2>
-          <p className="text-xs text-stone-400 mt-0.5">
-            Authors share ideas from their books — Talks at Google
-          </p>
-        </div>
-        <a
-          href="https://www.youtube.com/@talksatgoogle"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-amber-600 hover:text-amber-700 font-medium transition-colors"
-        >
-          View all →
-        </a>
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {videos.map((video, i) => (
           <motion.div

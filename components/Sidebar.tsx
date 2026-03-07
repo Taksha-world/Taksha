@@ -19,6 +19,7 @@ import {
   Flame,
   Pin,
   X,
+  ListOrdered,
 } from "lucide-react";
 import {
   getPinnedPosts,
@@ -48,6 +49,10 @@ const categoryLinks: SidebarLink[] = [
   { label: "Videos", href: "/?type=video", icon: <Film className="h-5 w-5" /> },
   { label: "Text", href: "/?type=text", icon: <FileText className="h-5 w-5" /> },
   { label: "Memes", href: "/?type=meme", icon: <Smile className="h-5 w-5" /> },
+];
+
+const moreLinks: SidebarLink[] = [
+  { label: "Tier Lists", href: "/tier-lists", icon: <ListOrdered className="h-5 w-5" /> },
 ];
 
 const bottomLinks: SidebarLink[] = [
@@ -237,6 +242,24 @@ export default function Sidebar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* More section */}
+      <div className="mx-3 my-2 border-t border-stone-100" />
+      {!collapsed && (
+        <p className="px-5 py-1 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
+          More
+        </p>
+      )}
+      <nav className="flex flex-col gap-0.5 px-3 pb-2">
+        {moreLinks.map((link) => (
+          <SidebarItem
+            key={link.label}
+            link={link}
+            collapsed={collapsed}
+            active={isActive(link.href)}
+          />
+        ))}
+      </nav>
 
       {/* Spacer */}
       <div className="flex-1" />
