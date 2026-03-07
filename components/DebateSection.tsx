@@ -372,21 +372,6 @@ function DebateCard({ debate }: { debate: Debate }) {
 export default function DebateSection() {
   return (
     <section className="mb-10">
-      <div className="flex items-center justify-between mb-5">
-        <div>
-          <h2 className="text-lg font-bold text-stone-800 tracking-tight">
-            Debates
-          </h2>
-          <p className="text-xs text-stone-400 mt-0.5">
-            Community takes on the tools and books above — pick a side
-          </p>
-        </div>
-        <span className="inline-flex items-center gap-1.5 text-xs text-orange-600 font-medium bg-orange-50 rounded-full px-3 py-1">
-          <Flame className="h-3 w-3" />
-          {debates.length} active
-        </span>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {debates.map((debate) => (
           <DebateCard key={debate.id} debate={debate} />

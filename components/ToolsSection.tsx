@@ -82,20 +82,6 @@ const tools: Tool[] = [
 export default function ToolsSection() {
   return (
     <section className="mb-10">
-      <div className="flex items-center justify-between mb-5">
-        <div>
-          <h2 className="text-lg font-bold text-stone-800 tracking-tight">
-            Tools & Websites
-          </h2>
-          <p className="text-xs text-stone-400 mt-0.5">
-            Curated tools the community loves
-          </p>
-        </div>
-        <span className="text-xs text-stone-400 font-medium bg-stone-100 rounded-full px-3 py-1">
-          {tools.length} tools
-        </span>
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {tools.map((tool, i) => (
           <motion.a

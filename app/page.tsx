@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import Sidebar from "@/components/Sidebar";
 import FeedPrompt from "@/components/FeedPrompt";
 import ToolsSection from "@/components/ToolsSection";
-import VideosSection from "@/components/VideosSection";
 import DebateSection from "@/components/DebateSection";
 
 function FeedContent() {
@@ -21,9 +20,6 @@ function FeedContent() {
 
           {/* Tools & Websites */}
           <ToolsSection />
-
-          {/* Book Discussion Videos at Google */}
-          <VideosSection />
 
           {/* Debates */}
           <DebateSection />
