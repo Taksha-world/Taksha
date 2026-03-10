@@ -5,11 +5,11 @@ import { getAllTierListEntries } from "@/lib/tier-lists";
 export const metadata: Metadata = {
   title: "Tier Lists — Taksha",
   description:
-    "Curated tool recommendations across categories. Find the best free tools for PDFs, prototyping, video editing, and more.",
+    "Visual tier lists ranking experiences, cultures, and ideas. IIT Bombay life, AI vs traditional research, coffee cultures, programming language vibes.",
   alternates: { canonical: "https://taksha.dev/tier-lists" },
   openGraph: {
     title: "Tier Lists — Taksha",
-    description: "Curated tool recommendations across categories.",
+    description: "Visual tier lists ranking experiences, cultures, and ideas.",
     url: "https://taksha.dev/tier-lists",
     type: "website",
     siteName: "Taksha",
@@ -23,11 +23,11 @@ export default function TierListsIndex() {
     <div className="min-h-screen">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 pt-8 pb-24">
         <header className="mb-10">
-          <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 tracking-tight font-[family-name:var(--font-cormorant)]">
+          <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 tracking-tight font-inter">
             Tier Lists
           </h1>
           <p className="text-sm text-stone-500 mt-2 max-w-xl leading-relaxed">
-            Curated recommendations for the best tools across categories. Each list is researched, compared, and kept up to date.
+            Visual tier lists ranking experiences, cultures, and ideas. Each list tells a story you can feel.
           </p>
         </header>
 

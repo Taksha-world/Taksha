@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Code2, Zap, GitFork, Globe, Rocket, Users, ArrowRight, Hammer, Sparkles, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
@@ -51,17 +48,13 @@ export default function AboutPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-radial from-amber-500/[0.04] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-4xl px-6 pt-20 pb-16 text-center relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
+          <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-600/15 bg-amber-500/[0.06] px-4 py-1.5 text-xs font-medium text-amber-700 mb-6">
               <Sparkles className="h-3.5 w-3.5" />
               Posts that run. Code that lives.
             </div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-stone-800 mb-4 leading-[1.1]">
+            <h1 className="font-inter text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-stone-800 mb-4 leading-[1.1]">
               Software that lives{" "}
               <span className="bg-gradient-to-r from-amber-600 via-amber-500 to-terracotta-400 bg-clip-text text-transparent">
                 in the feed
@@ -101,20 +94,16 @@ export default function AboutPage() {
                 <span className="text-sm font-medium">Growing community</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* The Problem */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="glass-card rounded-2xl p-8 md:p-12"
         >
-          <h2 className="font-display text-2xl font-bold text-stone-800 mb-4">
+          <h2 className="font-inter text-2xl font-bold text-stone-800 mb-4">
             The Problem
           </h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
@@ -130,18 +119,13 @@ export default function AboutPage() {
               the way she shares an Instagram reel.
             </p>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* How It Works */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="font-display text-2xl font-bold text-stone-800 mb-2 text-center">
+        <div>
+          <h2 className="font-inter text-2xl font-bold text-stone-800 mb-2 text-center">
             How Taksha Works
           </h2>
           <p className="text-stone-500 text-center mb-12 max-w-xl mx-auto">
@@ -154,38 +138,30 @@ export default function AboutPage() {
               { step: "2", title: "Post", desc: "One click and your creation is live in the feed. No hosting, no config, no DNS." },
               { step: "3", title: "Fork", desc: "Others can fork your work in one click, remix it, and post their version. Like GitHub meets Twitter." },
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={item.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="glass-card rounded-xl p-6 text-center"
               >
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-amber-600 text-white font-bold text-sm mb-4">
                   {item.step}
                 </div>
-                <h3 className="font-display text-lg font-bold text-stone-800 mb-2">{item.title}</h3>
+                <h3 className="font-inter text-lg font-bold text-stone-800 mb-2">{item.title}</h3>
                 <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Features Grid */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
-        <h2 className="font-display text-2xl font-bold text-stone-800 mb-8 text-center">
+        <h2 className="font-inter text-2xl font-bold text-stone-800 mb-8 text-center">
           Built for Builders
         </h2>
         <div className="grid md:grid-cols-2 gap-5">
           {features.map((feature, i) => (
-            <motion.div
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
               className="glass-card rounded-xl p-6 group hover:border-amber-200/60 transition-all"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 border border-amber-200/50 text-amber-600 mb-3 group-hover:bg-amber-100 transition-colors">
@@ -193,18 +169,14 @@ export default function AboutPage() {
               </div>
               <h3 className="font-semibold text-stone-800 mb-1.5">{feature.title}</h3>
               <p className="text-sm text-stone-500 leading-relaxed">{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* The Name */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="glass-card rounded-2xl p-8 md:p-12 text-center"
         >
           <span className="font-devanagari text-5xl font-bold text-amber-600">तक्ष</span>
@@ -214,18 +186,13 @@ export default function AboutPage() {
             university, where knowledge was created and shared freely. We&apos;re bringing
             that spirit to software.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 pb-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="font-display text-3xl font-bold text-stone-800 mb-4">
+        <div>
+          <h2 className="font-inter text-3xl font-bold text-stone-800 mb-4">
             Ready to build?
           </h2>
           <p className="text-stone-500 mb-8">
@@ -247,7 +214,7 @@ export default function AboutPage() {
               Browse Feed
             </Link>
           </div>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

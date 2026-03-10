@@ -543,7 +543,7 @@ export default function PromptBar({ onGenerate }: PromptBarProps) {
                   onKeyDown={handleKeyDown}
                   placeholder="e.g. &quot;A tip calculator with bill splitting&quot; or &quot;एक BMI कैलकुलेटर बनाओ&quot;"
                   rows={2}
-                  className="w-full resize-none rounded-xl border border-stone-200 bg-white px-4 py-3 pr-12 text-sm text-stone-800 placeholder:text-stone-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 transition-all font-[family-name:var(--font-source-sans)]"
+                  className="w-full resize-none rounded-xl border border-stone-200 bg-white px-4 py-3 pr-12 text-sm text-stone-800 placeholder:text-stone-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 transition-all font-sans"
                 />
                 {prompt.trim() && !isGenerating && (
                   <button

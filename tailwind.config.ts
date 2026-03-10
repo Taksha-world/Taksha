@@ -5,6 +5,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -49,10 +50,18 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-inter)", "sans-serif"],
-        sans: ["var(--font-source-sans)", "var(--font-noto-devanagari)", "sans-serif"],
+        display: ["'Milker'", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-inter)", "var(--font-noto-devanagari)", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
         devanagari: ["var(--font-noto-devanagari)", "sans-serif"],
+      },
+      fontSize: {
+        "heading-1": ["3.5rem", { lineHeight: "1.1", fontWeight: "700" }],
+        "heading-2": ["2.75rem", { lineHeight: "1.15", fontWeight: "700" }],
+        "heading-3": ["2.25rem", { lineHeight: "1.2", fontWeight: "600" }],
+        "heading-4": ["1.75rem", { lineHeight: "1.25", fontWeight: "600" }],
+        "heading-5": ["1.375rem", { lineHeight: "1.3", fontWeight: "600" }],
       },
       boxShadow: {
         "warm-sm": "0 1px 3px rgba(212, 160, 23, 0.08)",

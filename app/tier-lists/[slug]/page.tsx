@@ -5,7 +5,7 @@ import { toolPages, getAllTierListSlugs } from "@/lib/tier-lists";
 import TierListClient from "@/components/TierListClient";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 /** Pre-render all tier-list pages at build time */
@@ -14,11 +14,12 @@ export function generateStaticParams() {
 }
 
 /** Dynamic metadata per page — unique title, description, OG, keywords */
-export function generateMetadata({ params }: Props): Metadata {
-  const page = toolPages[params.slug];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const page = toolPages[slug];
   if (!page) return {};
 
-  const url = `https://taksha.dev/tier-lists/${params.slug}`;
+  const url = `https://taksha.dev/tier-lists/${slug}`;
 
   return {
     title: `${page.title} — Taksha`,
@@ -41,8 +42,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function TierListPage({ params }: Props) {
-  const page = toolPages[params.slug];
+export default async function TierListPage({ params }: Props) {
+  const { slug } = await params;
+  const page = toolPages[slug];
   if (!page) notFound();
 
   // JSON-LD: ItemList schema for rich results
@@ -57,7 +59,7 @@ export default function TierListPage({ params }: Props) {
       position: i + 1,
       name: tool.name,
       description: tool.description,
-      url: tool.url,
+      ...(tool.url ? { url: tool.url } : {}),
     })),
   };
 
@@ -146,7 +148,7 @@ export default function TierListPage({ params }: Props) {
 
           {/* Header — server-rendered for SEO */}
           <header className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 tracking-tight font-[family-name:var(--font-cormorant)]">
+            <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 tracking-tight font-inter">
               {page.title}
             </h1>
             <p className="text-sm text-stone-500 mt-2 max-w-2xl leading-relaxed">
@@ -171,7 +173,7 @@ export default function TierListPage({ params }: Props) {
           {/* FAQ section — server-rendered for SEO + AI */}
           {page.faqs.length > 0 && (
             <section className="mt-16 max-w-3xl">
-              <h2 className="text-lg font-bold text-stone-800 mb-6 font-[family-name:var(--font-cormorant)]">
+              <h2 className="text-lg font-bold text-stone-800 mb-6 font-inter">
                 Frequently Asked Questions
               </h2>
               <dl className="space-y-5">

@@ -6,17 +6,8 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
-  Heart,
-  Code2,
-  Image as ImageIcon,
-  Film,
-  FileText,
-  Smile,
-  Info,
   ChevronLeft,
   ChevronRight,
-  Compass,
-  Flame,
   Pin,
   X,
   ListOrdered,
@@ -37,26 +28,8 @@ interface SidebarLink {
 }
 
 const mainLinks: SidebarLink[] = [
-  { label: "Home", href: "/", icon: <Home className="h-5 w-5" /> },
-  { label: "Explore", href: "/?tab=explore", icon: <Compass className="h-5 w-5" /> },
-  { label: "Trending", href: "/?tab=trending", icon: <Flame className="h-5 w-5" /> },
-  { label: "Liked", href: "/?tab=liked", icon: <Heart className="h-5 w-5" /> },
-];
-
-const categoryLinks: SidebarLink[] = [
-  { label: "Builds", href: "/?type=build", icon: <Code2 className="h-5 w-5" /> },
-  { label: "Images", href: "/?type=image", icon: <ImageIcon className="h-5 w-5" /> },
-  { label: "Videos", href: "/?type=video", icon: <Film className="h-5 w-5" /> },
-  { label: "Text", href: "/?type=text", icon: <FileText className="h-5 w-5" /> },
-  { label: "Memes", href: "/?type=meme", icon: <Smile className="h-5 w-5" /> },
-];
-
-const moreLinks: SidebarLink[] = [
+  { label: "Feed", href: "/", icon: <Home className="h-5 w-5" /> },
   { label: "Tier Lists", href: "/tier-lists", icon: <ListOrdered className="h-5 w-5" /> },
-];
-
-const bottomLinks: SidebarLink[] = [
-  { label: "About", href: "/about", icon: <Info className="h-5 w-5" /> },
 ];
 
 export default function Sidebar() {
@@ -64,14 +37,19 @@ export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const [pinned, setPinned] = useState<PinnedEntry[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [search, setSearch] = useState("");
 
   // Load pinned posts on mount
   useEffect(() => {
     setPinned(getPinnedPosts());
   }, []);
 
+  // Sync search params after mount and on pathname changes
+  useEffect(() => {
+    setSearch(window.location.search);
+  }, [pathname]);
+
   const isActive = (href: string) => {
-    const search = typeof window !== "undefined" ? window.location.search : "";
     if (href === "/") return pathname === "/" && !search;
     if (href.includes("?")) {
       const params = new URLSearchParams(href.split("?")[1]);
@@ -166,26 +144,6 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Category divider */}
-      <div className="mx-3 my-2 border-t border-stone-100" />
-      {!collapsed && (
-        <p className="px-5 py-1 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
-          Categories
-        </p>
-      )}
-
-      {/* Category links */}
-      <nav className="flex flex-col gap-0.5 px-3 pb-2">
-        {categoryLinks.map((link) => (
-          <SidebarItem
-            key={link.label}
-            link={link}
-            collapsed={collapsed}
-            active={isActive(link.href)}
-          />
-        ))}
-      </nav>
-
       {/* --- Pinned / saved section --- */}
       {pinned.length > 0 && (
         <>
@@ -243,39 +201,8 @@ export default function Sidebar() {
         )}
       </AnimatePresence>
 
-      {/* More section */}
-      <div className="mx-3 my-2 border-t border-stone-100" />
-      {!collapsed && (
-        <p className="px-5 py-1 text-[10px] font-semibold uppercase tracking-wider text-stone-400">
-          More
-        </p>
-      )}
-      <nav className="flex flex-col gap-0.5 px-3 pb-2">
-        {moreLinks.map((link) => (
-          <SidebarItem
-            key={link.label}
-            link={link}
-            collapsed={collapsed}
-            active={isActive(link.href)}
-          />
-        ))}
-      </nav>
-
       {/* Spacer */}
       <div className="flex-1" />
-
-      {/* Bottom links */}
-      <div className="mx-3 my-2 border-t border-stone-100" />
-      <nav className="flex flex-col gap-0.5 px-3 pb-4">
-        {bottomLinks.map((link) => (
-          <SidebarItem
-            key={link.label}
-            link={link}
-            collapsed={collapsed}
-            active={isActive(link.href)}
-          />
-        ))}
-      </nav>
     </motion.aside>
   );
 }

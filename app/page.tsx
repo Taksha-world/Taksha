@@ -1,9 +1,11 @@
-"use client";
-
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Sidebar from "@/components/Sidebar";
 import VideosSection from "@/components/VideosSection";
-import DebateSection from "@/components/DebateSection";
+
+const DebateSection = dynamic(() => import("@/components/DebateSection"), {
+  loading: () => <div className="h-40" />,
+});
 
 function FeedContent() {
   return (
