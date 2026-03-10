@@ -124,6 +124,26 @@ export default function TierListPage({ params }: Props) {
             </ol>
           </nav>
 
+          {/* Cover banner */}
+          <div className={`relative h-36 rounded-xl bg-gradient-to-br ${page.coverGradient} overflow-hidden mb-8`}>
+            <div className="absolute inset-0 opacity-[0.07] dot-pattern" />
+            <span className="absolute text-5xl left-[10%] top-[15%] -rotate-12 opacity-90 drop-shadow-sm select-none">
+              {page.coverEmojis[0]}
+            </span>
+            <span className="absolute text-4xl right-[12%] top-[10%] rotate-6 opacity-70 drop-shadow-sm select-none">
+              {page.coverEmojis[1]}
+            </span>
+            <span className="absolute text-4xl left-[20%] bottom-[12%] rotate-12 opacity-75 drop-shadow-sm select-none">
+              {page.coverEmojis[2]}
+            </span>
+            <span className="absolute text-5xl right-[15%] bottom-[15%] -rotate-6 opacity-80 drop-shadow-sm select-none">
+              {page.coverEmojis[3]}
+            </span>
+            <div className="absolute bottom-0 left-0 right-0 px-5 py-3 bg-gradient-to-t from-black/25 to-transparent">
+              <p className="text-sm text-white/90 font-medium tracking-wide">{page.coverTagline}</p>
+            </div>
+          </div>
+
           {/* Header — server-rendered for SEO */}
           <header className="mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 tracking-tight font-[family-name:var(--font-cormorant)]">

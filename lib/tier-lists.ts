@@ -6,6 +6,10 @@ export interface ToolEntry {
   color: string;
   category: string;
   pricing?: string;
+  /** Richer emoji combo capturing the tool's vibe */
+  visual?: string;
+  /** What this tool excels at */
+  bestFor?: string;
 }
 
 export interface ToolPage {
@@ -21,6 +25,12 @@ export interface ToolPage {
   faqs: Array<{ question: string; answer: string }>;
   /** ISO date string of last update */
   lastUpdated: string;
+  /** 4 emojis capturing the list's core experience */
+  coverEmojis: string[];
+  /** Tailwind gradient for the cover visual */
+  coverGradient: string;
+  /** Short experiential tagline */
+  coverTagline: string;
   tools: ToolEntry[];
 }
 
@@ -56,6 +66,9 @@ export const toolPages: Record<string, ToolPage> = {
       },
     ],
     lastUpdated: "2026-03-07",
+    coverEmojis: ["📄", "✂️", "🔀", "✏️"],
+    coverGradient: "from-red-400 via-rose-500 to-orange-400",
+    coverTagline: "Edit, merge, split — PDFs made effortless",
     tools: [
       {
         name: "iLovePDF",
@@ -66,6 +79,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-red-500 to-red-600",
         category: "All-in-one",
         pricing: "Free / Pro from $4/mo",
+        visual: "📄❤️",
+        bestFor: "All-in-one PDF workflows",
       },
       {
         name: "Smallpdf",
@@ -76,6 +91,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-rose-500 to-pink-600",
         category: "All-in-one",
         pricing: "Free tier available",
+        visual: "📎✨",
+        bestFor: "Quick one-off edits",
       },
       {
         name: "PDF24",
@@ -86,6 +103,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-orange-500 to-amber-600",
         category: "All-in-one",
         pricing: "100% Free",
+        visual: "🔧📄",
+        bestFor: "Unlimited free use",
       },
       {
         name: "Sejda PDF",
@@ -96,6 +115,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-blue-500 to-indigo-600",
         category: "Editor",
         pricing: "Free (3 tasks/day)",
+        visual: "✏️📄",
+        bestFor: "Browser-based text editing",
       },
       {
         name: "PDF Escape",
@@ -106,6 +127,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-green-500 to-emerald-600",
         category: "Editor",
         pricing: "Free online",
+        visual: "🖊️🔓",
+        bestFor: "Simple form filling",
       },
       {
         name: "DocHub",
@@ -116,6 +139,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-sky-500 to-blue-600",
         category: "Collaboration",
         pricing: "Free tier available",
+        visual: "📝☁️",
+        bestFor: "Google Drive integration",
       },
     ],
   },
@@ -143,6 +168,9 @@ export const toolPages: Record<string, ToolPage> = {
       },
     ],
     lastUpdated: "2026-03-07",
+    coverEmojis: ["🎨", "📱", "🖱️", "✨"],
+    coverGradient: "from-violet-400 via-purple-500 to-indigo-500",
+    coverTagline: "From wireframe to clickable prototype",
     tools: [
       {
         name: "Figma",
@@ -153,6 +181,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-purple-500 to-violet-600",
         category: "Design",
         pricing: "Free for individuals",
+        visual: "🎨👥",
+        bestFor: "Team design collaboration",
       },
       {
         name: "Framer",
@@ -163,6 +193,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-blue-600 to-indigo-700",
         category: "Design + Code",
         pricing: "Free tier available",
+        visual: "⚡🏗️",
+        bestFor: "Ship production sites fast",
       },
       {
         name: "Penpot",
@@ -173,6 +205,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-teal-500 to-cyan-600",
         category: "Open Source",
         pricing: "100% Free",
+        visual: "🖌️🔓",
+        bestFor: "Free open-source design",
       },
       {
         name: "Balsamiq",
@@ -183,6 +217,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-red-400 to-rose-500",
         category: "Wireframe",
         pricing: "Free trial / $9/mo",
+        visual: "📐✏️",
+        bestFor: "Quick low-fidelity wireframes",
       },
       {
         name: "Marvel",
@@ -193,6 +229,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-yellow-500 to-orange-500",
         category: "Prototype",
         pricing: "Free tier available",
+        visual: "🦸📱",
+        bestFor: "User testing & prototyping",
       },
       {
         name: "InVision",
@@ -203,6 +241,8 @@ export const toolPages: Record<string, ToolPage> = {
         color: "from-pink-500 to-rose-600",
         category: "Prototype",
         pricing: "Free tier available",
+        visual: "💎🔮",
+        bestFor: "Design handoff & collaboration",
       },
     ],
   },

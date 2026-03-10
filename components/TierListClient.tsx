@@ -46,11 +46,11 @@ export default function TierListClient({ page }: { page: ToolPage }) {
             transition={{ duration: 0.35, delay: i * 0.04 }}
             className="group relative rounded-xl border border-stone-200/60 bg-white p-5 hover:border-stone-300 hover:shadow-warm-md transition-all duration-300 flex flex-col gap-3"
           >
-            {/* Icon */}
+            {/* Icon / Visual */}
             <div
-              className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${tool.color} text-white shadow-sm text-lg`}
+              className={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${tool.color} text-white shadow-sm`}
             >
-              {tool.icon}
+              <span className="text-lg leading-none">{tool.visual || tool.icon}</span>
             </div>
 
             {/* Info */}
@@ -64,11 +64,18 @@ export default function TierListClient({ page }: { page: ToolPage }) {
               <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">
                 {tool.description}
               </p>
-              {tool.pricing && (
-                <span className="inline-block mt-2 text-[10px] font-medium text-emerald-700 bg-emerald-50 rounded-md px-2 py-0.5">
-                  {tool.pricing}
-                </span>
-              )}
+              <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                {tool.pricing && (
+                  <span className="inline-block text-[10px] font-medium text-emerald-700 bg-emerald-50 rounded-md px-2 py-0.5">
+                    {tool.pricing}
+                  </span>
+                )}
+                {tool.bestFor && (
+                  <span className="inline-block text-[10px] font-medium text-amber-700 bg-amber-50 rounded-md px-2 py-0.5">
+                    Best for: {tool.bestFor}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Category pill */}

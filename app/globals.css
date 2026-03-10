@@ -74,6 +74,11 @@ body::before {
   .text-balance {
     text-wrap: balance;
   }
+
+  .dot-pattern {
+    background-image: radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
   
   .glass-card {
     background: #ffffff;
